@@ -46,11 +46,11 @@ function parseStatement(str) {
       if (!connective) {
         connective = nextConnective;
       } else if(connective !== nextConnective) {
-        throw "Duplicate Connectives in same statement"
+        throw new Error("Duplicate Connectives in same statement")
       }
       end += 1;
     } else {
-      throw "No Connective"
+      throw new Error("No Connective")
     }
   }
 
@@ -77,7 +77,7 @@ function parseStatement(str) {
       }
     }
   } else {
-    throw "Empty Statement"
+    throw new Error("Empty Statement")
   }
   return statement;
 }
@@ -89,18 +89,18 @@ function replaceAtomics(str) {
 }
 
 export function getString(statement) {
-  if (statement.type == "ATOMIC") {
+  if (statement.type === "ATOMIC") {
     return statement.parts[0];
-  } else if (statement.type == "NOT")  {
+  } else if (statement.type === "NOT")  {
     return "~" + getString(statement.parts[0])
   } else {
     let string = "(";
     for (let i = 0; i < statement.parts.length; i++) {
       string += getString(statement.parts[i])
       if (i < statement.parts.length - 1) {
-        if (statement.type == "AND") {
+        if (statement.type === "AND") {
           string += "&";
-        } else if (statement.type == "OR"){
+        } else if (statement.type === "OR"){
           string += "|";
         }
       }
@@ -129,9 +129,9 @@ export function getParsedStatement(statement) {
       let parsedStatement = parseStatement(replaceAtomics(statement))
       return parsedStatement;
     } else {
-      throw "Parenthesis Not Matched"
+      throw new Error("Parenthesis Not Matched")
     }
   } else {
-    throw "Invalid Characters";
+    throw new Error("Invalid Characters");
   }
 }
