@@ -1,5 +1,5 @@
-import {getParsedStatement, getString} from "./Parser";
-import {verifyStep} from "./Verifier";
+import {getParsedStatement, getString} from "./Parser.js";
+import {verifyStep} from "./Verifier.js";
 
 class Step {
   constructor(isPremise) {

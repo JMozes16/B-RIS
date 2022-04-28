@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./components/Header";
-import Step from "./boolean_algebra/Step";
-import Statement from "./components/Statement";
+import Header from "./components/Header.js";
+import Step from "./boolean_algebra/Step.js";
+import Statement from "./components/Statement.js";
 
 class App extends React.Component {
   constructor(props) {
