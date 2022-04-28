@@ -23,11 +23,13 @@ function getNextStatement(str, index) {
 function parseStatement(str) {
   let statement = {
     type: "",
+    atomics: [],
     parts: [],
   };
 
   if (str.length === 1) {
     statement.type = "ATOMIC"
+    statement.atomics.push(str)
     statement.parts.push(str)
     return statement
   }
@@ -56,9 +58,11 @@ function parseStatement(str) {
 
   if (statementParts.length === 1 && !connective) {
     if (str[0] === "~") {
+      let subStatement = parseStatement(str.slice(1, str.length));
       statement = {
         type: "NOT",
-        parts: [parseStatement(str.slice(1, str.length))],
+        atomics: [...subStatement.atomics],
+        parts: [subStatement],
       }
     } else {
       statement = parseStatement(str.slice(1, str.length - 1))
@@ -68,9 +72,11 @@ function parseStatement(str) {
     else if(connective === "|") statement.type = "OR";
     for (let i = 0; i < statementParts.length; i++) {
       if (statementParts[i][0] === "~") {
+        let subStatement = parseStatement(statementParts[i].slice(1, statementParts[i].length));
         statement.parts.push({
           type: "NOT",
-          parts: [parseStatement(statementParts[i].slice(1, statementParts[i].length))],
+          atomics: ,
+          parts: [subStatement],
         })
       } else {
         statement.parts.push(parseStatement(statementParts[i]))
