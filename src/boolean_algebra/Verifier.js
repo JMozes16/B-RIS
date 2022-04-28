@@ -2,7 +2,7 @@ import {AssociationVerifier} from "./verifiers/Association.js";
 import {CommutationVerifier} from "./verifiers/Commutation.js";
 import {DoubleNegationVerifier} from "./verifiers/DoubleNegation.js";
 import {DeMorganVerifier} from "./verifiers/DeMorgan.js";
-import {DistributionVerifier} from "./verifiers/Distribution.js";
+import {DistributionVerifier} from "./verifiers/Distribution/Distribution.js";
 import {IdempotenceVerifier} from "./verifiers/Idempotence.js";
 import {ComplementVerifier} from "./verifiers/Complement.js";
 import {IdentityVerifier} from "./verifiers/Identity.js";
