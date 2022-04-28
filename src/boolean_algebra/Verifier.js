@@ -30,7 +30,7 @@ const RULES = {
 
 export function verifyStep(statement1, statement2, rule) {
   if (!RULES[rule]) return false;
-  return RULES[rule](statement1, statement2);
+  return RULES[rule](JSON.parse(JSON.stringify(statement1)), JSON.parse(JSON.stringify(statement2)));
 }
 
 export function getRules() {
