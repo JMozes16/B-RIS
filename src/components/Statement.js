@@ -10,6 +10,7 @@ class Statement extends React.Component {
     this.state = {
       highlight: false,
       ruleSelect: false,
+      showParsedStatement: false,
     }
   }
 
@@ -47,11 +48,11 @@ class Statement extends React.Component {
               Parse Error
             </div>
           }
-          {/*{(!this.props.step.parseError && this.props.step.statement) &&*/}
-          {/*  <div className={"min-w-64 h-10 p-2 font-semibold tracking-wide"}>*/}
-          {/*    {this.props.step.parsedStatementString}*/}
-          {/*  </div>*/}
-          {/*}*/}
+          {(!this.props.step.parseError && this.props.step.statement && this.state.showParsedStatement) &&
+            <div className={"min-w-64 h-10 p-2 font-semibold tracking-wide"}>
+              {this.props.step.parsedStatementString}
+            </div>
+          }
           {(!this.props.step.parseError && !this.props.step.isPremise && !this.props.step.rule) &&
             <button
               className={"w-32 h-10 flex justify-center items-center text-white select-none rounded-md font-bold bg-blue"}

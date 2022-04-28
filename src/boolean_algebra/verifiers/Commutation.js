@@ -1,3 +1,8 @@
+import {getString, sortStatement} from "../Parser.js";
+
 export function CommutationVerifier(statement1, statement2) {
-  return false;
+  sortStatement(statement1)
+  sortStatement(statement2)
+  return getString(statement1) === getString(statement2);
 }
+
