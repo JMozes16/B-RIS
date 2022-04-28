@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser.js";
+import {getString} from "../Parser.js";
 
 function dissolve(statement) {
   if (statement.type === "ATOMIC") {

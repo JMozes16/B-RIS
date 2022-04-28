@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser";
+import {getString} from "../Parser";
 
 function replace(str) {
   return str.replace(/~⊤/g, "⊥").replace(/~⊥/g, "⊤");
