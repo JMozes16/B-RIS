@@ -23,13 +23,11 @@ function getNextStatement(str, index) {
 function parseStatement(str) {
   let statement = {
     type: "",
-    atomics: [],
     parts: [],
   };
 
   if (str.length === 1) {
     statement.type = "ATOMIC"
-    statement.atomics.push(str)
     statement.parts.push(str)
     return statement
   }
@@ -61,7 +59,6 @@ function parseStatement(str) {
       let subStatement = parseStatement(str.slice(1, str.length));
       statement = {
         type: "NOT",
-        atomics: [...subStatement.atomics],
         parts: [subStatement],
       }
     } else {
@@ -75,7 +72,6 @@ function parseStatement(str) {
         let subStatement = parseStatement(statementParts[i].slice(1, statementParts[i].length));
         statement.parts.push({
           type: "NOT",
-          atomics: ,
           parts: [subStatement],
         })
       } else {
@@ -89,9 +85,23 @@ function parseStatement(str) {
 }
 
 function replaceAtomics(str) {
-  return str.replace(/[a-zA-Z]/g, (match, index, string) => {
+  return str.replace(/[a-zA-Z⊤⊥]/g, (match, index, string) => {
     return "(" + match + ")";
   });
+}
+
+function matchedParenthesis(str) {
+  let count = 0;
+  let i = 0;
+  while (i < str.length) {
+    if (str[i] === "(") {
+      count++;
+    } else if (str[i] === ")") {
+      count--;
+    }
+    i++;
+  }
+  return count === 0;
 }
 
 export function getString(statement) {
@@ -115,18 +125,28 @@ export function getString(statement) {
   }
 }
 
-function matchedParenthesis(str) {
-  let count = 0;
-  let i = 0;
-  while (i < str.length) {
-    if (str[i] === "(") {
-      count++;
-    } else if (str[i] === ")") {
-      count--;
+export function sortStatement(statement1) {
+  if (statement1.type === "ATOMIC") {
+    let value = statement1.parts[0].charCodeAt(0)
+    if (statement1.parts[0] === "⊤" || statement1.parts[0] === "⊥") {
+      value -= 102;
     }
-    i++;
+    value -= 65
+    statement1.value = value;
+  } else if (statement1.type === "NOT") {
+    sortStatement(statement1.parts[0]);
+    statement1.value = 2 * statement1.value
+  } else {
+    let value = 1000;
+    for (let i = 0; i < statement1.parts.length; i++) {
+      sortStatement(statement1.parts[i])
+      value += statement1.parts[i].value;
+    }
+    statement1.parts.sort((a1, b1) => {
+      return a1.value - b1.value;
+    })
+    statement1.value = value;
   }
-  return count === 0;
 }
 
 export function getParsedStatement(statement) {
