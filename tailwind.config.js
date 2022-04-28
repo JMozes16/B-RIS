@@ -15,6 +15,9 @@ module.exports = {
       "orange": {
         DEFAULT: "#FF7F48",
       },
+      "green": {
+        DEFAULT: "#4ED443",
+      },
       "white": "#FFFFFF",
       "black": "#000000",
     },

@@ -7,37 +7,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      premises: [],
-      steps: [],
+      steps: [new Step(true)],
     }
-  }
-
-  addPremise = () => {
-    this.setState((prevState) => {
-      let premises = [...prevState.premises]
-      premises.push(new Step())
-      return {
-        premises: premises,
-      }
-    })
   }
 
   addStep = () => {
     this.setState((prevState) => {
       let steps = [...prevState.steps]
-      steps.push(new Step())
+      steps.push(new Step(false))
       return {
         steps: steps,
-      }
-    })
-  }
-
-  removePremise = (index) => {
-    this.setState((prevState) => {
-      let premises = [...prevState.premises]
-      premises.splice(index, 1)
-      return {
-        premises: premises,
       }
     })
   }
@@ -52,20 +31,20 @@ class App extends React.Component {
     })
   }
 
-  onPremiseInput = (index, e) => {
-    this.setState((prevState) => {
-      let premises = [...prevState.premises]
-      premises[index].updateStatement(e.target.value)
-      return {
-        premises: premises,
-      }
-    })
-  }
-
   onStepInput = (index, e) => {
     this.setState((prevState) => {
       let steps = [...prevState.steps]
       steps[index].updateStatement(e.target.value)
+      return {
+        steps: steps,
+      }
+    })
+  }
+
+  onRuleSelect = (index, rule) => {
+    this.setState((prevState) => {
+      let steps = [...prevState.steps]
+      steps[index].updateRule(steps[index-1], rule)
       return {
         steps: steps,
       }
@@ -78,46 +57,17 @@ class App extends React.Component {
         <Header />
         <div className={"w-full p-8"}>
           <div>
-            <div className={"font-bold text-2xl my-2"}>
-              Premises
-            </div>
-            <div className={"gap-2 flex flex-col"}>
-              {this.state.premises.map((premise, index) => (
+            <div className={"flex flex-col"}>
+              {this.state.steps.map((step, index) => (
                 <Statement
+                  step={step}
                   statementNumber={index + 1}
-                  statement={premise.statement}
-                  parseError={premise.parseError}
-                  parsedStatementString={premise.parsedStatementString}
-                  onRemove={() => {this.removePremise(index)}}
-                  onInput={(e) => {this.onPremiseInput(index, e)}}
+                  statement={step.statement}
+                  onRemove={() => {this.removeStep(index)}}
+                  onInput={(e) => {this.onStepInput(index, e)}}
+                  onRuleSelect={(rule) => {this.onRuleSelect(index, rule)}}
                 />
               ))}
-            </div>
-            <button
-              className={"w-48 h-12 bg-blue rounded-lg text-white font-bold my-2 hover:bg-blue-dark"}
-              onClick={this.addPremise}
-            >
-              Add Premise
-            </button>
-          </div>
-          <div className={"h-1 bg-black rounded-lg my-2"}/>
-          <div>
-            <div className={"font-bold text-2xl mb-2 mt-6"}>
-              Steps
-            </div>
-            <div className={"gap-2 flex flex-col"}>
-              <div className={"gap-2 flex flex-col"}>
-                {this.state.steps.map((step, index) => (
-                  <Statement
-                    statementNumber={index + 1}
-                    statement={step.statement}
-                    parseError={step.parseError}
-                    parsedStatementString={step.parsedStatementString}
-                    onRemove={() => {this.removeStep(index)}}
-                    onInput={(e) => {this.onStepInput(index, e)}}
-                  />
-                ))}
-              </div>
             </div>
             <button
               className={"w-48 h-12 bg-blue rounded-lg text-white font-bold my-2 hover:bg-blue-dark"}

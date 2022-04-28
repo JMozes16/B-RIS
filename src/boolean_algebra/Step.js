@@ -1,11 +1,15 @@
 import {getParsedStatement, getString} from "./Parser";
+import {verifyStep} from "./Verifier";
 
 class Step {
-  constructor() {
+  constructor(isPremise) {
+    this.isPremise = isPremise;
     this.statement = "";
     this.parsedStatement = {};
     this.parsedStatementString = "";
     this.parseError = false;
+    this.rule = "";
+    this.correct = true;
   }
 
   updateStatement(statement) {
@@ -26,6 +30,12 @@ class Step {
       this.parsedStatement = {};
       this.parseError = false;
     }
+  }
+
+  updateRule(prevStep, rule) {
+    console.log(prevStep.parsedStatementString, this.parsedStatementString)
+    this.rule = rule;
+    this.correct = verifyStep(prevStep.parsedStatement, this.parsedStatement, rule);
   }
 }
 
