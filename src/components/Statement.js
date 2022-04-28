@@ -1,5 +1,5 @@
 import React from "react";
-import {getRules} from "../boolean_algebra/Verifier";
+import {getRules} from "../boolean_algebra/Verifier.js";
 
 const RULES = getRules();
 

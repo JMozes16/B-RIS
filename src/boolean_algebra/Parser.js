@@ -1,5 +1,5 @@
 function getNextStatement(str, index) {
-  if (/A-Z/.test(str[index])) {
+  if (/A-Z⊤⊥/.test(str[index])) {
     return index + 1;
   } else {
     let count = 0;
@@ -124,7 +124,7 @@ function matchedParenthesis(str) {
 }
 
 export function getParsedStatement(statement) {
-  if (/^$|^[()~&|A-Z]*$/.test(statement)) {
+  if (/^$|^[()~&|A-Z⊤⊥]*$/.test(statement)) {
     if (matchedParenthesis(statement)) {
       let parsedStatement = parseStatement(replaceAtomics(statement))
       return parsedStatement;
