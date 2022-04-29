@@ -1,3 +1,4 @@
+import { parse } from "postcss";
 import {getParsedStatement, getString} from "../../Parser.js";
 
 export function DistributionVerifier(statement1, statement2) {
@@ -20,10 +21,19 @@ function FindChanges(state1, state2, str1, str2) {
     return true;
   }
   let spot = -1;
+  if (!state2.type) {
+    return false;
+  }
   for (let i=0; i<state2.parts.length; i++) {
     if (state2.type === state1.type) {
-      if (state2.parts[i].type !== state1.parts[i].type || getString(state2.parts[i]) !== getString(state1.parts[i])) {
-        spot = i
+      if (state2.type === "ATOMIC") {
+        if (state2.parts[i].type !== state1.parts[i].type || state2.parts[i] !== state1.parts[i]) {
+          spot = i;
+        }
+      } else {
+        if (state2.parts[i].type !== state1.parts[i].type || getString(state2.parts[i]) !== getString(state1.parts[i])) {
+          spot = i;
+        }
       }
     } else {
       return Distribution(state1, state2);
@@ -42,6 +52,9 @@ function FindChanges(state1, state2, str1, str2) {
 }
 
 function Distribution(parsedStatement1, parsedStatement2) {
+  if (!parsedStatement1.type || parsedStatement1.type === "ATOMIC") {
+    return false;
+  }
   let connective1 = parsedStatement1.type;
   let allAtomic = true;
   for (let i = 0; i < parsedStatement1.parts.length; i++) {
