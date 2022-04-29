@@ -1,12 +1,39 @@
 import {getParsedStatement, getString} from "../Parser.js";
 
 export function AdjacencyVerifier(statement1, statement2) {
+  return FindChanges(statement1, statement2);
+}
+
+function FindChanges(statement1, statement2) {
+  let state1 = statement1;
+  let state2 = statement2;
   if (getString(statement1).length > getString(statement2).length) {
-    return AdjacencyHelper(statement1, statement2);
+    state1 = statement1;
+    state2 = statement2;
   } else if (getString(statement2).length > getString(statement1).length) {
-    return AdjacencyHelper(statement2, statement1);
+    state1 = statement2;
+    state2 = statement1;
   } else {
     return false;
+  }
+
+  if (state2.type === "ATOMIC") {
+    return AdjacencyHelper(state1, state2);
+  }
+  let spot = -1;
+  for (let i=0; i<state2.parts.length; i++) {
+    if (state2.type === state1.type) {
+      if (state2.parts[i].type !== state1.parts[i].type || getString(state2.parts[i]) !== getString(state1.parts[i])) {
+        spot = i
+      }
+    } else {
+      return AdjacencyHelper(state1, state2);
+    }
+  }
+  if (spot === -1) {
+    return false;
+  } else {
+    return FindChanges(state1.parts[spot], state2.parts[spot]);
   }
 }
 
@@ -120,6 +147,9 @@ let statement14 = getParsedStatement("(A&C)")//true
 let statement15 = getParsedStatement("A|C")
 let statement16 = getParsedStatement("A")//false
 
+let statement17 = getParsedStatement("A&(B|((C|B)&(C|~B)))")
+let statement18 = getParsedStatement("A&(B|C)")//true
+
 console.log(AdjacencyVerifier(statement1, statement2))
 console.log(AdjacencyVerifier(statement3, statement4))
 console.log(AdjacencyVerifier(statement5, statement6))
@@ -128,3 +158,4 @@ console.log(AdjacencyVerifier(statement9, statement10))
 console.log(AdjacencyVerifier(statement11, statement12))
 console.log(AdjacencyVerifier(statement13, statement14))
 console.log(AdjacencyVerifier(statement15, statement16))
+console.log(AdjacencyVerifier(statement17, statement18))
