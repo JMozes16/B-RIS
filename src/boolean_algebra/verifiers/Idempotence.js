@@ -51,6 +51,9 @@ function FindChanges(state1, state2, str1, str2) {
 }
 
 function IdempotenceHelper(statement1,statement2){
+  if (!statement1.type) {
+    return false;
+  }
   let count = false;
   let answers = []; 
   let str = "(";
