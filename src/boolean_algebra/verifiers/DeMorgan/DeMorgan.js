@@ -1,4 +1,4 @@
-import {getString} from "../Parser";
+import {getString} from "../../Parser.js";
 
 function DeMorgan(statement) {
   let newStatement = {

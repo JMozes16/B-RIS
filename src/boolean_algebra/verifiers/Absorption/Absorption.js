@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser.js";
+import {getString} from "../../Parser.js";
 
 export function AbsorptionVerifier(statement1, statement2) {
   let state1 = statement1;
@@ -87,36 +87,3 @@ function AbsorptionHelper(statement1,statement2){
   }
   return false
 }
-
-let statement1 = getParsedStatement("A&(A|B)")//true
-let statement2 = getParsedStatement("A")
-
-let statement3 = getParsedStatement("(A&B)|A")//true
-let statement4 = getParsedStatement("A")
-
-let statement5 = getParsedStatement("A|(A|B)")//false
-let statement6 = getParsedStatement("A")
-
-let statement7 = getParsedStatement("A&(A&B)")//false
-let statement8 = getParsedStatement("A")
-
-let statement9 = getParsedStatement("(A|B)&((A&B)|C)")//false
-let statement10 = getParsedStatement("(A&B)")
-
-let statement11 = getParsedStatement("(A&B)&((A&B)|C)")//true
-let statement12 = getParsedStatement("(A&B)")
-
-let statement13 = getParsedStatement("D&((A&B)&((A&B)|C))")//true
-let statement14 = getParsedStatement("D&(A&B)")
-
-let statement15 = getParsedStatement("D&((A&B)&(C|(A&B)))&E")//false
-let statement16 = getParsedStatement("D&(A&B)&F")
-
-console.log(AbsorptionVerifier(statement1, statement2))
-console.log(AbsorptionVerifier(statement3, statement4))
-console.log(AbsorptionVerifier(statement5, statement6))
-console.log(AbsorptionVerifier(statement7, statement8))
-console.log(AbsorptionVerifier(statement9, statement10))
-console.log(AbsorptionVerifier(statement11, statement12))
-console.log(AbsorptionVerifier(statement13, statement14))
-console.log(AbsorptionVerifier(statement15, statement16))

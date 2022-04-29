@@ -1,4 +1,4 @@
-import {getString} from "../Parser";
+import {getString} from "../../Parser.js";
 
 function replace(str) {
   return str.replace(/~⊤/g, "⊥").replace(/~⊥/g, "⊤");

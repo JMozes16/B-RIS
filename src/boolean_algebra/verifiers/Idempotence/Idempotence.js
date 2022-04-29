@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser.js";
+import {getString} from "../../Parser.js";
 
 export function IdempotenceVerifier(statement1, statement2) {
   let state1 = statement1;
@@ -61,7 +61,7 @@ function IdempotenceHelper(statement1,statement2){
     return false;
   }
   for (let i = 0; i < statement1.parts.length-1; i++){
-    if (getString(statement1.parts[i]) == getString(statement1.parts[i+1])){
+    if (getString(statement1.parts[i]) === getString(statement1.parts[i+1])){
       if (statement1.parts[i].type !== "ATOMIC") {
         count = true;
       }
@@ -90,42 +90,12 @@ function IdempotenceHelper(statement1,statement2){
       }
     }
     if (statement2.type !== "ATOMIC") answers[i] += ")";
-    if (getString(statement2) == answers[i]) return true;
+    if (getString(statement2) === answers[i]) return true;
   }
 
 
   return false;
 }
 
-let statement1 = getParsedStatement("A&A");
-let statement2 = getParsedStatement("A");
 
-let statement3 = getParsedStatement("A&A&A");
-
-let statement4 = getParsedStatement("(A|A)|(A|A)");
-let statement5 = getParsedStatement("(A|A)");
-
-let statement6 = getParsedStatement("A&A&A&B&B&B");
-let statement7 = getParsedStatement("A&A&B&B");
-
-let statement8 = getParsedStatement("(A&B)&(A&B)&(A&B)");
-let statement9 = getParsedStatement("(A&B)&(A&B)");
-
-let statement10 = getParsedStatement("((A&B)&(A&B)&(A&B))&(E|F)");
-let statement11 = getParsedStatement("((A&B)&(A&B))&(E|F)");
-
-let statement12 = getParsedStatement("(C|D)&((A&B)&(A&B)&(A&B))&(E|F)");
-let statement13 = getParsedStatement("(C|D)&((A&B)&(A&B))&(E|G)");
-
-let statement14 = getParsedStatement("(C|D)&((A&B)&(A&B)&(A&B))&(E|F)");
-let statement15 = getParsedStatement("(C|D)&((A&B)&(A&B))&(E|F)");
-
-console.log(IdempotenceVerifier(statement3,statement1)); //true
-console.log(IdempotenceVerifier(statement3,statement2)); //true 
-console.log(IdempotenceVerifier(statement4,statement5)); //true
-console.log(IdempotenceVerifier(statement6,statement7)); //true
-console.log(IdempotenceVerifier(statement8,statement9)); //true
-console.log(IdempotenceVerifier(statement10,statement11)); //true
-console.log(IdempotenceVerifier(statement12,statement13)); //false
-console.log(IdempotenceVerifier(statement14,statement15)); //true
 

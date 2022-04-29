@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser.js";
+import {getString} from "../../Parser.js";
 
 export function AdjacencyVerifier(statement1, statement2) {
   let state1 = statement1;
@@ -138,40 +138,3 @@ function AdjacencyHelper(statement1, statement2) {
     }
   }
 }
-
-let statement1 = getParsedStatement("(A|B)&(A|~B)")
-let statement2 = getParsedStatement("A")//true
-
-let statement3 = getParsedStatement("(A&B)|(A&~B)")
-let statement4 = getParsedStatement("A")//true
-
-let statement5 = getParsedStatement("(~B&A)|(A&B)")
-let statement6 = getParsedStatement("A")//true
-
-let statement7 = getParsedStatement("(A&~B)|(A&B)")
-let statement8 = getParsedStatement("A")//true
-
-let statement9 = getParsedStatement("(A&~B)|(A&B)")
-let statement10 = getParsedStatement("B")//false
-
-let statement11 = getParsedStatement("(A&~B)&(A&B)")
-let statement12 = getParsedStatement("A")//false
-
-let statement13 = getParsedStatement("((A&C)&~B)|((A&C)&B)")
-let statement14 = getParsedStatement("(A&C)")//true
-
-let statement15 = getParsedStatement("A|C")
-let statement16 = getParsedStatement("A")//false
-
-let statement17 = getParsedStatement("A&(B|((C|B)&(C|~B)))")
-let statement18 = getParsedStatement("A&(B|C)")//true
-
-console.log(AdjacencyVerifier(statement1, statement2))
-console.log(AdjacencyVerifier(statement3, statement4))
-console.log(AdjacencyVerifier(statement5, statement6))
-console.log(AdjacencyVerifier(statement7, statement8))
-console.log(AdjacencyVerifier(statement9, statement10))
-console.log(AdjacencyVerifier(statement11, statement12))
-console.log(AdjacencyVerifier(statement13, statement14))
-console.log(AdjacencyVerifier(statement15, statement16))
-console.log(AdjacencyVerifier(statement17, statement18))

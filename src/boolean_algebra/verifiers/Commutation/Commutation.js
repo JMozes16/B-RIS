@@ -1,4 +1,4 @@
-import {getString, sortStatement} from "../Parser.js";
+import {getString, sortStatement} from "../../Parser.js";
 
 export function CommutationVerifier(statement1, statement2) {
   sortStatement(statement1)

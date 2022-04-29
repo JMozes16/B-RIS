@@ -1,5 +1,8 @@
-import { parse } from "postcss";
 import {getParsedStatement, getString} from "../../Parser.js";
+
+function replace(str) {
+  return str.replace(/AND/g, "&").replace(/OR/g, "|").replace(/NOT/g, "~");
+}
 
 export function DistributionVerifier(statement1, statement2) {
   let state1 = statement1;
@@ -74,7 +77,7 @@ function Distribution(parsedStatement1, parsedStatement2) {
   }
   let newStr = DistributionHelper(parsedStatement1.parts[0], parsedStatement1.parts[1], connective1);
   let distStr2 = DistributionHelper2(parsedStatement1.parts[0], parsedStatement1.parts[1], connective1);
-  if (((newStr === getString(parsedStatement2)) && newStrBool) || (distStr2 === getString(parsedStatement2)) && (parsedStatement1.parts.length === 2)) {
+  if ((((newStr === getString(parsedStatement2)) && newStrBool) || (distStr2 === getString(parsedStatement2))) && (parsedStatement1.parts.length === 2)) {
     return true
   }
   for (let i = 1; i<parsedStatement1.parts.length-1; i++) {
@@ -115,9 +118,7 @@ function DistributionHelper(LHS, RHS, connective1) {
     }
   }
   distString += ")";
-  distString = distString.replaceAll("AND", "&");
-  distString = distString.replaceAll("OR", "|");
-  distString = distString.replaceAll("NOT", "~");
+  distString = replace(distString);
   return distString;
 }
 
@@ -147,8 +148,6 @@ function DistributionHelper2(LHS, RHS, connective1) {
     }
   }
   distString += ")";
-  distString = distString.replaceAll("AND", "&");
-  distString = distString.replaceAll("OR", "|");
-  distString = distString.replaceAll("NOT", "~");
+  distString = replace(distString);
   return distString;
 }

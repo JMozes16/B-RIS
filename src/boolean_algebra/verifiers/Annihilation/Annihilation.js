@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser.js";
+import {getString} from "../../Parser.js";
 
 export function AnnihilationVerifier(statement1, statement2) {
   let state1 = statement1;
@@ -69,42 +69,3 @@ function AnnihilationHelper(statement1,statement2){
   }
   return false;
 }
-
-
-let statement1 = getParsedStatement("A|⊤")//true
-let statement2 = getParsedStatement("⊤")
-
-let statement3 = getParsedStatement("A&⊥")//true
-let statement4 = getParsedStatement("⊥")
-
-let statement5 = getParsedStatement("(A&B)&⊥")//true
-let statement6 = getParsedStatement("⊥")
-
-let statement7 = getParsedStatement("(A|B)|⊤")//false
-let statement8 = getParsedStatement("T")
-
-let statement9 = getParsedStatement("A&B&C&D&⊥")//true
-let statement10 = getParsedStatement("⊥");
-
-let statement11 = getParsedStatement("A&B&C&D&⊤&⊥&⊤")//true
-let statement12 = getParsedStatement("⊥");
-
-let statement13 = getParsedStatement("A|B|C|D|⊤|⊥")//true
-let statement14 = getParsedStatement("⊤");
-
-let statement15 = getParsedStatement("(A|B)&(A|B|C|D|⊤|⊥)&(C)")//true
-let statement16 = getParsedStatement("(A|B)&⊤&(C)");
-
-let statement17 = getParsedStatement("(A|B)&(A|B|C|D|⊤|⊥)&(C)")//false
-let statement18 = getParsedStatement("(A|B)&⊤");
-
-
-console.log(AnnihilationVerifier(statement1,statement2))
-console.log(AnnihilationVerifier(statement3,statement4))
-console.log(AnnihilationVerifier(statement5,statement6))
-console.log(AnnihilationVerifier(statement7,statement8))
-console.log(AnnihilationVerifier(statement9,statement10))
-console.log(AnnihilationVerifier(statement11,statement12))
-console.log(AnnihilationVerifier(statement13,statement14))
-console.log(AnnihilationVerifier(statement15,statement16))
-console.log(AnnihilationVerifier(statement17,statement18))

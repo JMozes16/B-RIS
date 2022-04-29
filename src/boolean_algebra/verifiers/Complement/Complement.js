@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser.js";
+import {getString} from "../../Parser.js";
 
 export function ComplementVerifier(statement1, statement2) {
   let state1 = statement1;
@@ -77,32 +77,3 @@ function ComplementHelper(statement1, statement2) {
   }
   return false;
 }
-
-let statement1 = getParsedStatement("A&~A")
-let statement2 = getParsedStatement("⊥")//true
-
-let statement3 = getParsedStatement("A|~A")
-let statement4 = getParsedStatement("⊤")//true
-
-let statement5 = getParsedStatement("(A&B)|~(A&B)")
-let statement6 = getParsedStatement("⊤")//true
-
-let statement7 = getParsedStatement("(A&B)|~(A&C)")
-let statement8 = getParsedStatement("⊤")//false
-
-let statement9 = getParsedStatement("(A&B)|~((A&B)&C)")
-let statement10 = getParsedStatement("⊤")//false
-
-let statement11 = getParsedStatement("A&(B|((A&B)|~(A&B)))")
-let statement12 = getParsedStatement("A&(B|⊤)")//true
-
-let statement13 = getParsedStatement("A|((A&B)|~(A&B))")
-let statement14 = getParsedStatement("A|⊤")//true
-
-console.log(ComplementVerifier(statement1, statement2))
-console.log(ComplementVerifier(statement3, statement4))
-console.log(ComplementVerifier(statement5, statement6))
-console.log(ComplementVerifier(statement7, statement8))
-console.log(ComplementVerifier(statement9, statement10))
-console.log(ComplementVerifier(statement11, statement12))
-console.log(ComplementVerifier(statement13, statement14))

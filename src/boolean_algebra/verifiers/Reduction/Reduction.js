@@ -1,4 +1,4 @@
-import {getParsedStatement, getString} from "../Parser.js";
+import {getString} from "../../Parser.js";
 
 export function ReductionVerifier(statement1, statement2) {
   let state1 = statement1;
@@ -99,27 +99,3 @@ function ReductionHelper(statement1, statement2) {
   return (reductStr === getString(statement2));
 }
 
-let statement1 = getParsedStatement("A&(~A|B)")
-let statement2 = getParsedStatement("A&B")//true
-
-let statement3 = getParsedStatement("A|(~A&B)")
-let statement4 = getParsedStatement("A|B")//true
-
-let statement3_2 = getParsedStatement("(~A&B)|A")
-let statement4_2 = getParsedStatement("A|B")//true
-
-let statement5 = getParsedStatement("(A&B)|(~(A&B)&(C|D))")
-let statement6 = getParsedStatement("(A&B)|(C|D)")//true
-
-let statement7 = getParsedStatement("A|(~A&B)")
-let statement8 = getParsedStatement("A|B")//true
-
-let statement9 = getParsedStatement("C&(A|(~A&B))&D")
-let statement10 = getParsedStatement("C&(A|B)&D")//true
-
-console.log(ReductionVerifier(statement1, statement2))
-console.log(ReductionVerifier(statement3, statement4))
-console.log(ReductionVerifier(statement3_2, statement4_2))
-console.log(ReductionVerifier(statement5, statement6))
-console.log(ReductionVerifier(statement7, statement8))
-console.log(ReductionVerifier(statement9, statement10))

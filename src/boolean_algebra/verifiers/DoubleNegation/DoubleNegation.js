@@ -1,4 +1,4 @@
-import {getString} from "../Parser";
+import {getString} from "../../Parser.js";
 
 export function DoubleNegationVerifier(statement1, statement2) {
   let string1 = getString(statement1).replace(/~~/g, "");
