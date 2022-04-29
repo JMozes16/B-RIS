@@ -29,6 +29,15 @@ let statement16 = getParsedStatement("(A|B|C)&((A|B)&C)")//false
 let statement17 = getParsedStatement("(A|B)|(C&D)")
 let statement18 = getParsedStatement("((A|B)|C)&((A|B)|D)")//true
 
+let statement19 = getParsedStatement("(D|A)&((A|B)|(C&D))")
+let statement20 = getParsedStatement("(D|A)&(((A|B)|C)&((A|B)|D))")//true
+
+let statement21 = getParsedStatement("(D|A)&((A|B)|(C&D))")
+let statement22 = getParsedStatement("(D&A)&(((A|B)|C)&((A|B)|D))")//false
+
+let statement23 = getParsedStatement("(D|A)&((A|B)|(C&D))&(E|F)")
+let statement24 = getParsedStatement("(D|A)&(((A|B)|C)&((A|B)|D))&(E|F)")//true
+
 console.log(DistributionVerifier(statement1, statement2))
 console.log(DistributionVerifier(statement2, statement1))
 console.log(DistributionVerifier(statement3, statement4))
@@ -40,3 +49,6 @@ console.log(DistributionVerifier(statement11, statement12))
 console.log(DistributionVerifier(statement13, statement14))
 console.log(DistributionVerifier(statement15, statement16))
 console.log(DistributionVerifier(statement17, statement18))
+console.log(DistributionVerifier(statement19, statement20))
+console.log(DistributionVerifier(statement21, statement22))
+console.log(DistributionVerifier(statement23, statement24))

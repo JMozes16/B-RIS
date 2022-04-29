@@ -1,13 +1,44 @@
 import {getParsedStatement, getString} from "../../Parser.js";
 
-export function DistributionVerifier(parsedStatement1, parsedStatement2) {
-  if (getString(parsedStatement2).length > getString(parsedStatement1).length) {
-    return (Distribution(parsedStatement1, parsedStatement2));
-  } else if (getString(parsedStatement1).length > getString(parsedStatement2).length) {
-    return (Distribution(parsedStatement2, parsedStatement1));
+export function DistributionVerifier(statement1, statement2) {
+  let state1 = statement1;
+  let state2 = statement2;
+  if (getString(statement1).length > getString(statement2).length) {
+    state1 = statement2;
+    state2 = statement1;
+  } else if (getString(statement2).length > getString(statement1).length) {
+    state1 = statement1;
+    state2 = statement2;
   } else {
-    return (Distribution(parsedStatement2, parsedStatement1) || Distribution(parsedStatement1, parsedStatement2));
+    return false;
   }
+  return FindChanges(state1, state2, getString(state1), getString(state2));
+}
+
+function FindChanges(state1, state2, str1, str2) {
+  if (Distribution(state1, state2)) {
+    return true;
+  }
+  let spot = -1;
+  for (let i=0; i<state2.parts.length; i++) {
+    if (state2.type === state1.type) {
+      if (state2.parts[i].type !== state1.parts[i].type || getString(state2.parts[i]) !== getString(state1.parts[i])) {
+        spot = i
+      }
+    } else {
+      return Distribution(state1, state2);
+    }
+  }
+  if (spot === -1) {
+    return false;
+  } else {
+    if (FindChanges(state1.parts[spot], state2.parts[spot], str1, str2)) {
+      if (str1.replace(getString(state1.parts[spot]), getString(state2.parts[spot])) === str2) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 function Distribution(parsedStatement1, parsedStatement2) {
