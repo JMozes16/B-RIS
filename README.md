@@ -1,7 +1,7 @@
 # BRIS - Boolean Algebra Verifier
 
 ## Overview
-
+ 
 ### Rules
 * Association
 * Commutation
