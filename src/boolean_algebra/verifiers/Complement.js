@@ -1,10 +1,6 @@
 import {getParsedStatement, getString} from "../Parser.js";
 
 export function ComplementVerifier(statement1, statement2) {
-  return FindChanges(statement1, statement2);
-}
-
-function FindChanges(statement1, statement2) {
   let state1 = statement1;
   let state2 = statement2;
   if (getString(statement1).length > getString(statement2).length) {
@@ -16,15 +12,18 @@ function FindChanges(statement1, statement2) {
   } else {
     return false;
   }
+  return FindChanges(state1, state2, getString(state1), getString(state2));
+}
 
-  if (state2.type === "ATOMIC") {
-    return ComplementHelper(state1, state2);
+function FindChanges(state1, state2, str1, str2) {
+  if (ComplementHelper(state1, state2)) {
+    return true;
   }
   let spot = -1;
   for (let i=0; i<state2.parts.length; i++) {
     if (state2.type === state1.type) {
       if (state2.parts[i].type !== state1.parts[i].type || getString(state2.parts[i]) !== getString(state1.parts[i])) {
-        spot = i;
+        spot = i
       }
     } else {
       return ComplementHelper(state1, state2);
@@ -33,8 +32,13 @@ function FindChanges(statement1, statement2) {
   if (spot === -1) {
     return false;
   } else {
-    return FindChanges(state1.parts[spot], state2.parts[spot]);
+    if (FindChanges(state1.parts[spot], state2.parts[spot], str1, str2)) {
+      if (str1.replace(getString(state1.parts[spot]), getString(state2.parts[spot])) === str2) {
+        return true;
+      }
+    }
   }
+  return false;
 }
 
 function ComplementHelper(statement1, statement2) {
