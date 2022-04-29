@@ -135,7 +135,7 @@ export function sortStatement(statement1) {
     statement1.value = value;
   } else if (statement1.type === "NOT") {
     sortStatement(statement1.parts[0]);
-    statement1.value = 2 * statement1.value
+    statement1.value = 2 * statement1.parts[0].value
   } else {
     let value = 1000;
     for (let i = 0; i < statement1.parts.length; i++) {
