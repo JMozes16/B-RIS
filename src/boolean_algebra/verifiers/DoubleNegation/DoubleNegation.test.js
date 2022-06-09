@@ -6,3 +6,57 @@ test('Test 1', () => {
   let statement2 = getParsedStatement("A")
   expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
 });
+
+test('Test 2', () => {
+  let statement1 = getParsedStatement("~~A&B")
+  let statement2 = getParsedStatement("A&B")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 3', () => {
+  let statement1 = getParsedStatement("A&~~B")
+  let statement2 = getParsedStatement("A&B")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 4', () => {
+  let statement1 = getParsedStatement("~~A|B")
+  let statement2 = getParsedStatement("A|B")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 5', () => {
+  let statement1 = getParsedStatement("A|~~B")
+  let statement2 = getParsedStatement("A|B")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 6', () => {
+  let statement1 = getParsedStatement("~~A&~~B")
+  let statement2 = getParsedStatement("A&B")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 7', () => {
+  let statement1 = getParsedStatement("~~A|~~B")
+  let statement2 = getParsedStatement("A|B")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 8', () => {
+  let statement1 = getParsedStatement("(~~A|B)&C")
+  let statement2 = getParsedStatement("(A|B)&C")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 9', () => {
+  let statement1 = getParsedStatement("(A|~~B)&C")
+  let statement2 = getParsedStatement("(A|B)&C")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 10', () => {
+  let statement1 = getParsedStatement("(~~A|~~B)&~~C")
+  let statement2 = getParsedStatement("(A|B)&C")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
+});
