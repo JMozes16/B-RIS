@@ -51,6 +51,7 @@ class App extends React.Component {
     })
   }
 
+    
   render() {
     return (
       <div className={"w-full font-quicksand"}>
@@ -69,6 +70,7 @@ class App extends React.Component {
                 />
               ))}
             </div>
+            
             <button
               className={"w-48 h-12 bg-blue rounded-lg text-white font-bold my-2 hover:bg-blue-dark"}
               onClick={this.addStep}

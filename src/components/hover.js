@@ -1,0 +1,3 @@
+tippy('#btn', {
+    content: "some",
+})
