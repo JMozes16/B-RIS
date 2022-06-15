@@ -21,9 +21,14 @@
 https://www.b-ris.xyz/
 
 ### Creators
-* Shamar Samuels
 * Josh Mozes
+* Shamar Samuels
+
+### Devs
 * Devanshu Haldar
+* Jeda Coward
+* Southerland Brown
+* Michael Annor
 
 ## Development
 
