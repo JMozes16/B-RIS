@@ -12,7 +12,7 @@ export function IdentityVerifier(statement1, statement2) {
   } else {
     return false;
   }
-  return findChanges(state1, state2, IdentityHelper);
+  return findChanges(state1, state2, IdentityHelper, getString(state1), getString(state2));
 }
 
 export function IdentityHelper(statement1, statement2) {

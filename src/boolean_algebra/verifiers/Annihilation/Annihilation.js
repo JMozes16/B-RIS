@@ -12,7 +12,7 @@ export function AnnihilationVerifier(statement1, statement2) {
   } else {
     return false;
   }
-  return findChanges(state1, state2, AnnihilationHelper);
+  return findChanges(state1, state2, AnnihilationHelper, getString(state1), getString(state2));
 }
 
 export function AnnihilationHelper(statement1,statement2){

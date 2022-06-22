@@ -12,7 +12,7 @@ export function ReductionVerifier(statement1, statement2) {
   } else {
     return false;
   }
-  return findChanges(state1, state2, ReductionHelper);
+  return findChanges(state1, state2, ReductionHelper, getString(state1), getString(state2));
 }
 
 export function ReductionHelper(statement1, statement2) {
