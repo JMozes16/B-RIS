@@ -105,6 +105,9 @@ function matchedParenthesis(str) {
 }
 
 export function getString(statement) {
+  if (!statement.type) {  // essentially does the same thing as the "=== ATOMIC" line jsut below, but sometimes the findChanges() may just pass the string...
+    return statement;
+  }
   if (statement.type === "ATOMIC") {
     return statement.parts[0];
   } else if (statement.type === "NOT")  {
