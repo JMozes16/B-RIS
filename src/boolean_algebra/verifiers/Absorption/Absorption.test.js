@@ -48,3 +48,9 @@ test('Test 8', () => {
   let statement2 = getParsedStatement("D&(A&B)&F")
   expect(AbsorptionVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 9', () => {
+  let statement1 = getParsedStatement("D&((A&B)&(C|(A&B)))&E&F&G")
+  let statement2 = getParsedStatement("D&(A&B)&E&F&G")
+  expect(AbsorptionVerifier(statement1, statement2)).toBeTruthy();
+});
