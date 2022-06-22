@@ -12,7 +12,7 @@ export function AdjacencyVerifier(statement1, statement2) {
   } else {
     return false;
   }
-  return findChanges(state1, state2, AdjacencyHelper);
+  return findChanges(state1, state2, AdjacencyHelper, getString(state1), getString(state2));
 }
 
 export function AdjacencyHelper(statement1, statement2) {

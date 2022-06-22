@@ -105,9 +105,6 @@ function matchedParenthesis(str) {
 }
 
 export function getString(statement) {
-  if (!statement.type) {  // essentially does the same thing as the "=== ATOMIC" line jsut below, but sometimes the findChanges() may just pass the string...
-    return statement;
-  }
   if (statement.type === "ATOMIC") {
     return statement.parts[0];
   } else if (statement.type === "NOT")  {
@@ -165,9 +162,7 @@ export function getParsedStatement(statement) {
   }
 }
 
-export function findChanges(state1, state2, helperFunc) {
-  let str1 = getString(state1);
-  let str2 = getString(state2);
+export function findChanges(state1, state2, helperFunc, str1, str2) {
   if (helperFunc(state1, state2)) {
     return true;
   }
@@ -193,7 +188,7 @@ export function findChanges(state1, state2, helperFunc) {
   if (spot === -1) {
       return false;
   } else {
-    if (findChanges(state1.parts[spot], state2.parts[spot], helperFunc)) {
+    if (findChanges(state1.parts[spot], state2.parts[spot], helperFunc, str1, str2)) {
       if (str1.replace(getString(state1.parts[spot]), getString(state2.parts[spot])) === str2) {
         return true;
       }

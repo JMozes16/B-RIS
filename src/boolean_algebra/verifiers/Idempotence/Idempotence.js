@@ -12,7 +12,7 @@ export function IdempotenceVerifier(statement1, statement2) {
   } else {
     return false;
   }
-  return findChanges(state1, state2, IdempotenceHelper);
+  return findChanges(state1, state2, IdempotenceHelper, getString(state1), getString(state2));
 }
 
 export function IdempotenceHelper(statement1,statement2){
