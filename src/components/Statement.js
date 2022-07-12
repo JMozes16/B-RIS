@@ -83,7 +83,7 @@ class Statement extends React.Component {
               <div className={"h-0.5 bg-black w-full rounded-lg my-1"}/>
               <div className={"flex flex-col gap-1"}>
                 {RULES.map(rule => {
-                  if(rule == "Association"){
+                  if(rule === "Association"){
                     return  <button title = "Association description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -91,7 +91,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Commutation"){
+                  else if(rule === "Commutation"){
                     return <button title = "Commutation description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -99,7 +99,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Double Negation"){
+                  else if(rule === "Double Negation"){
                     return <button title = "Double Negation description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -107,7 +107,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "DeMorgan"){
+                  else if(rule === "DeMorgan"){
                     return <button title = "DeMorgan description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -115,7 +115,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Distribution"){
+                  else if(rule === "Distribution"){
                     return <button title = "Distribution description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -123,7 +123,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Idempotence"){
+                  else if(rule === "Idempotence"){
                     return <button title = "Idempotence description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -131,7 +131,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Complement"){
+                  else if(rule === "Complement"){
                     return <button title = "Complement description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -139,7 +139,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Identity"){
+                  else if(rule === "Identity"){
                     return <button title = "Identity description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -147,7 +147,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Annihilation"){
+                  else if(rule === "Annihilation"){
                     return <button title = "Annihilation description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -155,7 +155,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Inverse"){
+                  else if(rule === "Inverse"){
                     return <button title = "Inverse description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -163,7 +163,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Absoprtion"){
+                  else if(rule === "Absoprtion"){
                     return <button title = "Absoprtion description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -171,7 +171,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Reduction"){
+                  else if(rule === "Reduction"){
                     return <button title = "Reduction description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
@@ -179,7 +179,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule == "Adjacency"){
+                  else if(rule === "Adjacency"){
                     return <button title = "Adjacency description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
