@@ -1,4 +1,4 @@
-import {getString} from "../../Parser.js";
+import {getString, findChanges} from "../../Parser.js";
 
 function DeMorgan(statement) {
   let newStatement = {
@@ -34,7 +34,7 @@ function DeMorganHelper(statement1, statement2) {
       }
     }
     return true
-  } else if(statement1.type === "NOT") {
+  } else if (statement1.type === "NOT") {
     if (statement2.type === "NOT") {
       return DeMorganVerifier(statement1.parts[0], statement2.parts[0]);
     } else {
@@ -46,5 +46,5 @@ function DeMorganHelper(statement1, statement2) {
 }
 
 export function DeMorganVerifier(statement1, statement2) {
-  return DeMorganHelper(statement1, statement2) || DeMorganHelper(statement2, statement1);
+  return findChanges(statement1, statement2, DeMorganHelper) || findChanges(statement2, statement1, DeMorganHelper);
 }
