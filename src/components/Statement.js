@@ -187,6 +187,9 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
+                  else{
+                    return <button> {rule} </button>
+                  }
                 }             
                 )}
               </div>
