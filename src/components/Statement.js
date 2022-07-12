@@ -107,6 +107,7 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
+                  
                   else if(rule === "DeMorgan"){
                     return <button title = "DeMorgan description"
                     className={"h-5 font-bold text-black"}
@@ -163,8 +164,8 @@ class Statement extends React.Component {
                     {rule}
                   </button>
                   }
-                  else if(rule === "Absoprtion"){
-                    return <button title = "Absoprtion description"
+                  else if(rule === "Absorption"){
+                    return <button title = "Absorption description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
