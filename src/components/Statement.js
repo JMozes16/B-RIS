@@ -31,7 +31,9 @@ class Statement extends React.Component {
 
   render() {
     return (
+      
       <div className={"flex items-center"}>
+      
         <div className={"h-14 w-2 bg-blue"}/>
         <div className={"flex gap-2 items-center px-2 h-14 rounded-r-lg bg-opacity-30 " + (this.state.highlight ? "bg-blue" : "bg-none")}>
           <div className={"w-10 h-10 bg-blue rounded-md font-bold flex justify-center items-center text-white text-xl select-none"}>
@@ -80,14 +82,117 @@ class Statement extends React.Component {
               </div>
               <div className={"h-0.5 bg-black w-full rounded-lg my-1"}/>
               <div className={"flex flex-col gap-1"}>
-                {RULES.map((rule) => (
-                  <button
+                {RULES.map(rule => {
+                  if(rule === "Association"){
+                    return  <button title = "Association description"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
                     {rule}
                   </button>
-                ))}
+                  }
+                  else if(rule === "Commutation"){
+                    return <button title = "Commutation description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Double Negation"){
+                    return <button title = "Double Negation description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  
+                  else if(rule === "DeMorgan"){
+                    return <button title = "DeMorgan description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Distribution"){
+                    return <button title = "Distribution description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Idempotence"){
+                    return <button title = "Idempotence description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Complement"){
+                    return <button title = "Complement description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Identity"){
+                    return <button title = "Identity description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Annihilation"){
+                    return <button title = "Annihilation description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Inverse"){
+                    return <button title = "Inverse description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Absorption"){
+                    return <button title = "Absorption description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Reduction"){
+                    return <button title = "Reduction description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else if(rule === "Adjacency"){
+                    return <button title = "Adjacency description"
+                    className={"h-5 font-bold text-black"}
+                    onClick={() => this.onRuleSelect(rule)}
+                  >
+                    {rule}
+                  </button>
+                  }
+                  else{
+                    return <button> {rule} </button>
+                  }
+                }             
+                )}
               </div>
             </div>
           }
