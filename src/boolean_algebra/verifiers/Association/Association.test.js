@@ -16,49 +16,49 @@ test('Test 2', () => {
 test('Test 3', () => {
   let statement1 = getParsedStatement("(A&B)&C")
   let statement2 = getParsedStatement("(A&C)&B")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
 
 test('Test 4', () => {
   let statement1 = getParsedStatement("(A&B)|(C&D)")
   let statement2 = getParsedStatement("(B&A)|(C&D)")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
 
 test('Test 5', () => {
   let statement1 = getParsedStatement("(H&I)|(J&K)")
   let statement2 = getParsedStatement("(I&H)|(J&K)")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
 
 test('Test 6', () => {
   let statement1 = getParsedStatement("(L&M)|(N&O)")
   let statement2 = getParsedStatement("(L&M)|(O&N)")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 }); 
 
 test('Test 7', () => {
   let statement1 = getParsedStatement("(A|B)|C")
   let statement2 = getParsedStatement("(A|C)|B")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
 
 test('Test 8', () => {
   let statement1 = getParsedStatement("(A|B)&(C|D)")
   let statement2 = getParsedStatement("(B|A)&(D|C)")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy(); 
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy(); 
 });
 
 test('Test 9', () => {
   let statement1 = getParsedStatement("(A|B)&(C|D)")
   let statement2 = getParsedStatement("(B|A)&(C|D)")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
 
 test('Test 10', () => {
   let statement1 = getParsedStatement("(A|B)&(C|D)")
   let statement2 = getParsedStatement("(A|B)&(D|C)")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
 
 test('Test 11', () => {
@@ -94,7 +94,7 @@ test('Test 15', () => {
 test('Test 16', () => {
   let statement1 = getParsedStatement("(A&B&C)|((E|F)|(G))")
   let statement2 = getParsedStatement("(B&A&C)|((G)|(E|F))")
-  expect(AssociationVerifier(statement1, statement2)).toBeTruthy();
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
 
 test('Test 17', () => {
