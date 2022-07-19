@@ -72,3 +72,15 @@ test('Test 12', () => {
   let statement2 = getParsedStatement("A&A")
   expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 13', () => {
+  let statement1 = getParsedStatement("(x | y) & (x | ~y)")
+  let statement2 = getParsedStatement("x")
+  expect(ReductionVerifier(statement1, statement2)).toBeTruthy();
+}); 
+
+test('Test 14', () => {
+  let statement1 = getParsedStatement("(x & y) | (x & ~y)")
+  let statement2 = getParsedStatement("y")
+  expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
+});
