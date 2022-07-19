@@ -14,8 +14,8 @@ test('Test 2', () => {
 });
 
 test('Test 3', () => {
-  let statement1 = getParsedStatement("A & B")
-  let statement2 = getParsedStatement("B & A")
+  let statement1 = getParsedStatement("A&B")
+  let statement2 = getParsedStatement("B&A")
   expect(CommutationVerifier(statement1, statement2)).toBeTruthy();
 });
 
