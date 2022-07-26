@@ -84,7 +84,7 @@ class Statement extends React.Component {
               <div className={"flex flex-col gap-1"}>
                 {RULES.map(rule => {
                   if(rule === "Association"){
-                    return  <button title = "Association description"
+                    return  <button title = "This property tells us we can associate groups of added or multiplied variables together with parentheses without altering the truth of the equation"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -92,7 +92,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Commutation"){
-                    return <button title = "Commutation description"
+                    return <button title = "Distributive property illustrates how to expand a Boolean expression formed by the product of a sum, and in reverse shows us how terms may be factored out of Boolean sums-of-products:"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -100,7 +100,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Double Negation"){
-                    return <button title = "Double Negation description"
+                    return <button title = "double negation is the theorem that states that \"If a statement is true, then it is not the case that the statement is not true.\""
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -109,7 +109,7 @@ class Statement extends React.Component {
                   }
                   
                   else if(rule === "DeMorgan"){
-                    return <button title = "DeMorgan description"
+                    return <button title = "De Morgan's Laws describe how mathematical statements and concepts are related through their opposites. In set theory, De Morgan's Laws relate the intersection and union of sets through complements. In propositional logic, De Morgan's Laws relate conjunctions and disjunctions of propositions through negation."
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -117,7 +117,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Distribution"){
-                    return <button title = "Distribution description"
+                    return <button title = "distributive property, illustrating how to expand a Boolean expression formed by the product of a sum, and in reverse shows us how terms may be factored out of Boolean sums-of-products:"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -125,7 +125,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Idempotence"){
-                    return <button title = "Idempotence description"
+                    return <button title = "Boolean logic has idempotence within both AND and OR gates. A logical AND gate with two inputs A will also have an output of A. (1 AND 1 = 1, 0 AND 0 = 0). An OR gate has idempotence because 0 OR 0 = 0, and 1 OR 1 = 1."
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -133,7 +133,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Complement"){
-                    return <button title = "Complement description"
+                    return <button title = "A two-input gate that provides both the AND and the NAND functions in a single circuit. Such gates do exist and they are referred to as complementary output gates. The general symbology for such a gate is the basic gate figure with a bar and two output lines protruding from it."
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -141,7 +141,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Identity"){
-                    return <button title = "Identity description"
+                    return <button title = "An identity is a statement true for all possible values of its variable or variables. The algebraic identity of x + 0 = x tells us that anything (x) added to zero equals the original “anything,” no matter what value that “anything” (x) may be."
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
