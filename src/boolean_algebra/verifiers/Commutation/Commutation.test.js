@@ -90,3 +90,9 @@ test('Test 15', () => {
   let statement2 = getParsedStatement("(B&D&E)|(A&C)")
   expect(CommutationVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 16', () => {
+  let statement1 = getParsedStatement("((A&B&C)|g)|(E&f)")
+  let statement2 = getParsedStatement("(E&f)|(g|(A&B&C))")
+  expect(CommutationVerifier(statement1, statement2)).toBeTruthy();
+});

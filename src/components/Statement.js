@@ -84,7 +84,7 @@ class Statement extends React.Component {
               <div className={"flex flex-col gap-1"}>
                 {RULES.map(rule => {
                   if(rule === "Association"){
-                    return  <button title = "Rearranging the parenthesis in an expression of the same operation will not change the result.\nEX. (x | y) | z ≡ x | (y | z) and  (x & y) & z ≡ x & (y & z)"
+                    return  <button title = "Rearranging the parenthesis in an expression of the same operation will not change the result. EX: (x ∨ y) ∨ z ≡ x ∨ (y ∨ z) and  (x ∧ y) ∧ z ≡ x ∧ (y ∧ z)"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -92,7 +92,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Commutation"){
-                    return <button title = "Allows you to move two propositions around a conjunction or disjunction.\nEX. (x & y) ≡ (y & x) and (x | y) ≡ (y | x)"
+                    return <button title = "Allows you to move multiple propositions around a conjunction or disjunction. EX: (x ∧ y) ≡ (y ∧ x) and (x ∨ y) ≡ (y ∨ x)"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -100,7 +100,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Double Negation"){
-                    return <button title = "If a statement is true, then it is not the case that the statement is not true.\nEX. x ≡ ~(~x) and ~(~y) ≡ y"
+                    return <button title = "If a statement is true, then it is not the case that the statement is not true. EX: x ≡ ¬(¬x) and ¬(¬y) ≡ y"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -109,7 +109,7 @@ class Statement extends React.Component {
                   }
                   
                   else if(rule === "DeMorgan"){
-                    return <button title = "The expression of conjunctions and disjunctions in terms of their negations.\nEX. ~(x & y) ≡ ~x | ~y and ~(x | y) ≡ ~x & ~y"
+                    return <button title = "The expression of conjunctions and disjunctions in terms of their negations. EX: ¬(x ∧ y) ≡ ¬x ∨ ¬y and ¬(x ∨ y) ≡ ¬x ∧ ¬y"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -117,7 +117,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Distribution"){
-                    return <button title = "Expand individual occurrences of connectives into separate applications of connectives in the expression.\nEX. x & (y | z) ≡ (x & y) | (x & z) and  x | (y & z) ≡ (x | y) & (x | z)"
+                    return <button title = "Expand individual occurrences of connectives into separate applications of connectives in the expression. EX: x ∧ (y ∨ z) ≡ (x ∧ y) ∨ (x ∨ z) and  x | (y ∧ z) ≡ (x ∨ y) ∧ (x ∨ z)"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -125,7 +125,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Idempotence"){
-                    return <button title = "Combining a quantity with itself will result in itself.\nEX. x | x ≡ x and y & y ≡ y"
+                    return <button title = "Combining a quantity with itself will result in itself. EX: x ∨ x ≡ x and y ∧ y ≡ y"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -133,7 +133,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Complement"){
-                    return <button title = "Logically adding a quantity with its negation will result in a 1, logically multiplying a quantity with its negation will result in a zero.\nEX. x + ~x ≡ ⊤ and y | ~y ≡ ⊥"
+                    return <button title = "Logical disjunction of a quantity with its negation will result in a 1, logical conjunction of a quantity with its negation will result in a zero. EX: x + ¬x ≡ ⊤ and y ∨ ¬y ≡ ⊥"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -141,7 +141,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Identity"){
-                    return <button title = "There is a constant that when combined with a signal cancels out the signal.\nEX. x & ⊤ ≡ ⊤ and y | ⊥ ≡ ⊥"
+                    return <button title = "Each thing is identical with itself. EX: x ∧ ⊤ ≡ x and x ∨ ⊥ ≡ x and x ∨ ⊤ ≡ ⊤ and x ∧ ⊥ ≡ ⊥"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -149,7 +149,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Annihilation"){
-                    return <button title = "There is a constant that when combined with a signal cancels out the signal.\nEX. x & ⊤ ≡ ⊤ and y | ⊥ ≡ ⊥"
+                    return <button title = "There is a constant that when combined with a variable cancels out the variable. EX: x ∧ ⊤ ≡ ⊤ and y ∨ ⊥ ≡ ⊥"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -157,7 +157,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Inverse"){
-                    return <button title = "Replaces ⊥ with ~⊤ and ⊤ with ~⊥.\nEX. ⊥ ≡ ~⊤ and ⊤ ≡ ~⊥"
+                    return <button title = "Replaces ⊥ with ¬⊤ and ⊤ with ¬⊥. EX: ⊥ ≡ ¬⊤ and ⊤ ≡ ¬⊥"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -165,7 +165,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Absorption"){
-                    return <button title = "The second variable is absorbed by the first.\nEX. x | (x & y) ≡ x and x & (x | y) ≡ x"
+                    return <button title = "The second variable is absorbed by the first. EX: x ∨ (x ∧ y) ≡ x and x ∧ (x ∨ y) ≡ x"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -173,7 +173,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Reduction"){
-                    return <button title = "Expression is reduced to its simplest form.\nEX. (x + y)(x + z) ≡ x + yz and x + xy ≡ x"
+                    return <button title = "Expression is reduced to its simplest form. EX: (x ∨ y)(x ∨ z) ≡ x ∨ (y ∧ z) and x ∨ (x ∧ y) ≡ x"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
@@ -181,7 +181,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Adjacency"){
-                    return <button title = "When an expression contains the same variables appears in but one appears in different forms in each term.\nEX. (x | y) & (x | ~y) ≡ x and (x & y) | (x & ~y) ≡ x"
+                    return <button title = "When an expression contains the same variables appears in but one appears in different forms in each term. EX: (x ∨ y) ∧ (x ∨ ¬y) ≡ x and (x ∧ y) ∨ (x ∧ ¬y) ≡ x"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
