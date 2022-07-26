@@ -18,7 +18,7 @@
 * Adjacency
 
 ### URL
-https://www.b-ris.xyz/
+https://master--graceful-melba-8008a5.netlify.app/
 
 ### Creators
 * Josh Mozes
