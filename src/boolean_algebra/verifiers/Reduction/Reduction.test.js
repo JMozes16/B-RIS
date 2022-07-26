@@ -63,7 +63,7 @@ test('Test 10', () => {
 
 test('Test 11', () => {
   let statement1 = getParsedStatement("(c&~C)")
-  let statement2 = getParsedStatement("")
+  let statement2 = getParsedStatement("c&~C")
   expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
 });
 
@@ -74,13 +74,31 @@ test('Test 12', () => {
 });
 
 test('Test 13', () => {
-  let statement1 = getParsedStatement("(x | y) & (x | ~y)")
+  let statement1 = getParsedStatement("(x|y)&(x|~y)")
   let statement2 = getParsedStatement("x")
-  expect(ReductionVerifier(statement1, statement2)).toBeTruthy();
+  expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
 }); 
 
 test('Test 14', () => {
-  let statement1 = getParsedStatement("(x & y) | (x & ~y)")
+  let statement1 = getParsedStatement("(x&y)|(x&~y)")
   let statement2 = getParsedStatement("y")
+  expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
+});
+
+test('Test 15', () => {
+  let statement1 = getParsedStatement("(A|C)&(~(A|C)|B)")
+  let statement2 = getParsedStatement("(A|C)&B")
+  expect(ReductionVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 16', () => {
+  let statement1 = getParsedStatement("((A|C)&(~(A|C)|B))&G")
+  let statement2 = getParsedStatement("((A|C)&B)&G")
+  expect(ReductionVerifier(statement1, statement2)).toBeTruthy();
+});
+
+test('Test 17', () => {
+  let statement1 = getParsedStatement("(A|C)&(~(A|C)|B)&G")
+  let statement2 = getParsedStatement("(A|C)&B&~G")
   expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
 });
