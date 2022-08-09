@@ -59,7 +59,7 @@ test('Test 9', () => {
 
 test('Test 10', () => {
   let statement1 = getParsedStatement("(D|A)&((A|B)|(C&D))")
-  let statement2 = getParsedStatement("(D|A)&(((A|B)|C)&((A|B)|D))")
+  let statement2 = getParsedStatement("(D|A)&(((A|B)|C)&((A|B)|D))&E")
   expect(DistributionVerifier(statement1, statement2)).toBeTruthy();
 });
 
