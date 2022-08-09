@@ -5,7 +5,7 @@ class Header extends React.Component {
     return (
       <div className={"w-full bg-blue"}>
         <div className={"font-quicksand text-white font-bold text-3xl p-4"}>
-          BRIS
+          B-RIS
         </div>
       </div>
     )
