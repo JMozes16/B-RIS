@@ -1,4 +1,4 @@
-# BRIS - Boolean Algebra Verifier
+# B-RIS - Boolean Algebra Verifier
 
 ## Overview
  
