@@ -1,3 +1,8 @@
+/*
+Implementation of the parser and other important functions
+*/
+
+// Returns next statement
 function getNextStatement(str, index) {
   if (/a-zA-Z⊤⊥/.test(str[index])) {
     return index + 1;
@@ -20,6 +25,8 @@ function getNextStatement(str, index) {
   }
 }
 
+
+// Parses input from users to make sure the statement is valid
 function parseStatement(str) {
   let statement = {
     type: "",
@@ -84,12 +91,15 @@ function parseStatement(str) {
   return statement;
 }
 
+
+// Replaces atomic variables
 function replaceAtomics(str) {
   return str.replace(/[a-zA-Z⊤⊥]/g, (match, index, string) => {
     return "(" + match + ")";
   });
 }
 
+// Makes sure parentheses match correctly
 function matchedParenthesis(str) {
   let count = 0;
   let i = 0;
@@ -104,6 +114,7 @@ function matchedParenthesis(str) {
   return count === 0;
 }
 
+// Turns a statement into a string of the statement
 export function getString(statement) {
   if (statement.type === "ATOMIC") {
     return statement.parts[0];
@@ -125,6 +136,7 @@ export function getString(statement) {
   }
 }
 
+// Sorts a statement alphabetically
 export function sortStatement(statement1) {
   if (statement1.type === "ATOMIC") {
     let value = statement1.parts[0].charCodeAt(0)
@@ -149,6 +161,7 @@ export function sortStatement(statement1) {
   }
 }
 
+// Calls parseStatement() and throws errors on failure
 export function getParsedStatement(statement) {
   if (/^$|^[()~&|a-zA-Z⊤⊥]*$/.test(statement)) {
     if (matchedParenthesis(statement)) {
@@ -162,6 +175,9 @@ export function getParsedStatement(statement) {
   }
 }
 
+// Finds all differences of the two statements, apllies given rule to every change to check if
+// the change is a result of the rule. Upon all changes being a result of the rule, returns success
+// Otherwise returns failure
 export function findChanges(state1, state2, helperFunc, str1, str2) {
   if (helperFunc(state1, state2)) {
     return true;

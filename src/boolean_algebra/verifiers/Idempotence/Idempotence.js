@@ -1,5 +1,10 @@
+/*
+Implementation of the Idempotence rule
+*/
+
 import {getString, findChanges} from "../../Parser.js";
 
+// Finds if user is doing Idempotence from statement 1 to 2 or vice-versa
 export function IdempotenceVerifier(statement1, statement2) {
   let state1 = statement1;
   let state2 = statement2;
@@ -15,6 +20,7 @@ export function IdempotenceVerifier(statement1, statement2) {
   return findChanges(state1, state2, IdempotenceHelper, getString(state1), getString(state2));
 }
 
+// Idempotence logic
 export function IdempotenceHelper(statement1,statement2){
   if (!statement1.type) {
     return false;

@@ -1,5 +1,10 @@
+/*
+Implementation of the Adjacency rule
+*/
+
 import {getString, findChanges} from "../../Parser.js";
 
+// Finds if user is doing Adjacency from statement 1 to 2 or vice-versa.
 export function AdjacencyVerifier(statement1, statement2) {
   let state1 = statement1;
   let state2 = statement2;
@@ -15,6 +20,7 @@ export function AdjacencyVerifier(statement1, statement2) {
   return findChanges(state1, state2, AdjacencyHelper, getString(state1), getString(state2));
 }
 
+// Adjacency logic
 export function AdjacencyHelper(statement1, statement2) {
   if (!statement1.type || statement1.type === "ATOMIC") {
     return false;

@@ -1,5 +1,11 @@
+/*
+Implementation of the Association rule
+*/
+
 import {getString} from "../../Parser.js";
 
+// Recursively iterates through statements to get rid of all extra parentheses
+// If the rule works both statements should then be the same
 function dissolve(statement) {
   if (statement.type === "ATOMIC") {
     return statement
@@ -23,6 +29,7 @@ function dissolve(statement) {
   }
 }
 
+// Checks if the statements are the same after dissolving
 export function AssociationVerifier(statement1, statement2) {
   dissolve(statement1)
   dissolve(statement2)
