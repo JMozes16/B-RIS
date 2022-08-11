@@ -29,6 +29,7 @@ https://master--graceful-melba-8008a5.netlify.app/
 * Jeda Coward
 * Southerland Brown
 * Michael Annor
+* Arya Shahvar
 
 ## Development
 
