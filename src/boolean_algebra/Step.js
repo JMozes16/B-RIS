@@ -1,3 +1,7 @@
+/*
+Implementation of the Step class. The Step holds the input statements from the users 
+*/
+
 import {getParsedStatement, getString} from "./Parser.js";
 import {verifyStep} from "./Verifier.js";
 
@@ -12,6 +16,7 @@ class Step {
     this.correct = true;
   }
 
+  // Changes the statement when the user makes a new input
   updateStatement(statement) {
     if (statement) {
       this.statement = statement;
@@ -32,6 +37,7 @@ class Step {
     }
   }
 
+  // Changes the rule when the user selects a new rule
   updateRule(prevStep, rule) {
     console.log(prevStep.parsedStatementString, this.parsedStatementString)
     this.rule = rule;

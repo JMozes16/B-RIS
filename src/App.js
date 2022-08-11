@@ -11,6 +11,7 @@ class App extends React.Component {
     }
   }
 
+  // Adds a new step to the end of the list
   addStep = () => {
     this.setState((prevState) => {
       let steps = [...prevState.steps]
@@ -21,6 +22,7 @@ class App extends React.Component {
     })
   }
 
+  // Removes the selected step
   removeStep = (index) => {
     this.setState((prevState) => {
       let steps = [...prevState.steps]
@@ -31,6 +33,7 @@ class App extends React.Component {
     })
   }
 
+  // Updates the statement on user input
   onStepInput = (index, e) => {
     this.setState((prevState) => {
       let steps = [...prevState.steps]
@@ -41,6 +44,7 @@ class App extends React.Component {
     })
   }
 
+  // Updates the selcted rule on user input
   onRuleSelect = (index, rule) => {
     this.setState((prevState) => {
       let steps = [...prevState.steps]

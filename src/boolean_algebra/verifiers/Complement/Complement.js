@@ -1,5 +1,10 @@
+/*
+Implementation of the Complement rule
+*/
+
 import {getString, findChanges} from "../../Parser.js";
 
+// Finds if user is doing Complement from statement 1 to 2 or vice-versa
 export function ComplementVerifier(statement1, statement2) {
   let state1 = statement1;
   let state2 = statement2;
@@ -15,6 +20,7 @@ export function ComplementVerifier(statement1, statement2) {
   return findChanges(state1, state2, ComplementHelper, getString(state1), getString(state2));
 }
 
+// Complement logic
 export function ComplementHelper(statement1, statement2) {
   if (!statement1.type || statement1.type === "ATOMIC") {
     return false;

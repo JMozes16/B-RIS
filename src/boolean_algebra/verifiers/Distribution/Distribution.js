@@ -1,9 +1,15 @@
+/*
+Implementation of the Distribution rule
+*/
+
 import {getParsedStatement, getString, findChanges} from "../../Parser.js";
 
+// Replaces text with symbols
 function replace(str) {
   return str.replace(/AND/g, "&").replace(/OR/g, "|").replace(/NOT/g, "~");
 }
 
+// Finds if user is doing Distribution from statement 1 to 2 or vice-versa
 export function DistributionVerifier(statement1, statement2) {
   let state1 = statement1;
   let state2 = statement2;
@@ -19,6 +25,7 @@ export function DistributionVerifier(statement1, statement2) {
   return findChanges(state1, state2, Distribution, getString(state1), getString(state2));
 }
 
+// Checks for all allowed types of distribution (currently: left-part through right-part or left-whole through right-part)
 export function Distribution(parsedStatement1, parsedStatement2) {
   if (!parsedStatement1.type || parsedStatement1.type === "ATOMIC") {
     return false;
@@ -55,6 +62,7 @@ export function Distribution(parsedStatement1, parsedStatement2) {
   return false;
 }
 
+// Distribution logic for left-part through right-part
 function DistributionHelper(LHS, RHS, connective1) {
   let distString = "(";
   if (LHS.type === "ATOMIC" && RHS.type === "ATOMIC") {
@@ -87,6 +95,7 @@ function DistributionHelper(LHS, RHS, connective1) {
   return distString;
 }
 
+// Distribution logic for left-whole through right-part
 function DistributionHelper2(LHS, RHS, connective1) {
   let distString = "(";
   if (LHS.type === "ATOMIC" && RHS.type === "ATOMIC") {

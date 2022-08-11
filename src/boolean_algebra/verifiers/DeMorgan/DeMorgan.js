@@ -1,5 +1,10 @@
+/*
+Implementation of the DeMorgan rule
+*/
+
 import {getString, findChanges} from "../../Parser.js";
 
+// Returns a statement that is a DeMorgan of the input
 function DeMorgan(statement) {
   let newStatement = {
     type: "",
@@ -19,6 +24,7 @@ function DeMorgan(statement) {
   return newStatement;
 }
 
+// DeMorgan logic
 function DeMorganHelper(statement1, statement2) {
   if (getString(statement1) === getString(statement2)) {
     return true;
@@ -45,6 +51,7 @@ function DeMorganHelper(statement1, statement2) {
   }
 }
 
+// Checks if user is doing DeMorgan from statement 1 to 2 or vice-versa
 export function DeMorganVerifier(statement1, statement2) {
   return findChanges(statement1, statement2, DeMorganHelper) || findChanges(statement2, statement1, DeMorganHelper);
 }
