@@ -56,5 +56,5 @@ function DeMorganHelper(statement1, statement2) {
 
 // Checks if user is doing DeMorgan from statement 1 to 2 or vice-versa
 export function DeMorganVerifier(statement1, statement2) {
-  return findChanges(statement1, statement2, DeMorganHelper) || findChanges(statement2, statement1, DeMorganHelper);
+  return findChanges(statement1, statement2, DeMorganHelper, getString(statement1), getString(statement2)) || findChanges(statement2, statement1, DeMorganHelper, getString(statement2), getString(statement1));
 }
