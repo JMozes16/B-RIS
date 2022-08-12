@@ -39,9 +39,13 @@ class Step {
 
   // Changes the rule when the user selects a new rule
   updateRule(prevStep, rule) {
-    console.log(prevStep.parsedStatementString, this.parsedStatementString)
-    this.rule = rule;
-    this.correct = verifyStep(prevStep.parsedStatement, this.parsedStatement, rule);
+    if (this.parsedStatementString && prevStep.parsedStatementString) {
+      console.log(prevStep.parsedStatementString, this.parsedStatementString)
+      this.rule = rule;
+      this.correct = verifyStep(prevStep.parsedStatement, this.parsedStatement, rule);
+    } else if (this.parsedStatementString) {
+      this.correct = false;
+    }
   }
 }
 

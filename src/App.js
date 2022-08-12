@@ -38,6 +38,12 @@ class App extends React.Component {
     this.setState((prevState) => {
       let steps = [...prevState.steps]
       steps[index].updateStatement(e.target.value)
+      if (steps[index].rule) {
+        steps[index].updateRule(steps[index-1], steps[index].rule);
+      }
+      if (index < steps.length-1 && steps[index+1].rule) {
+        steps[index+1].updateRule(steps[index], steps[index+1].rule);
+      }
       return {
         steps: steps,
       }
