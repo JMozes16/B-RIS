@@ -33,9 +33,11 @@ class Step {
   }
 
   updateRule(prevStep, rule) {
-    console.log(prevStep.parsedStatementString, this.parsedStatementString)
-    this.rule = rule;
-    this.correct = verifyStep(prevStep.parsedStatement, this.parsedStatement, rule);
+    if (this.parsedStatementString) {
+      console.log(prevStep.parsedStatementString, this.parsedStatementString)
+      this.rule = rule;
+      this.correct = verifyStep(prevStep.parsedStatement, this.parsedStatement, rule);
+    }
   }
 }
 
