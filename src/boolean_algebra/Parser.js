@@ -90,7 +90,8 @@ function parseStatement(str) {
       }
     }
   } else {
-    throw new Error("Empty Statement")
+    console.log("throw error?", statementParts);
+    // throw new Error("Empty Statement");
   }
   return statement;
 }
@@ -126,6 +127,9 @@ function matchedParenthesis(str) {
 
 // Turns a statement into a string of the statement
 export function getString(statement) {
+  if (!statement.type) {
+    return true;
+  }
   if (statement.type === "ATOMIC") {
     return statement.parts[0];
   } else if (statement.type === "NOT")  {
@@ -199,13 +203,15 @@ export function findChanges(state1, state2, helperFunc, str1, str2) {
   }
   for (let i=0; i<state2.parts.length; i++) {
     if (state2.type === state1.type) {
-      if (state2.type === "ATOMIC") {
+      if (state2.type === "ATOMIC" || state1.type === "ATOMIC") {
         if (state2.parts[i].type !== state1.parts[i].type || state2.parts[i] !== state1.parts[i]) {
           spot = i;
         }
       } else {
-        if (state2.parts[i].type !== state1.parts[i].type || getString(state2.parts[i]) !== getString(state1.parts[i])) {
-        spot = i;
+        if (state2.parts[i] && state1.parts[i]) {
+          if (state2.parts[i].type !== state1.parts[i].type || getString(state2.parts[i]) !== getString(state1.parts[i])) {
+          spot = i;
+          }
         }
       }
     } else {

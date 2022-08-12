@@ -37,7 +37,7 @@ class App extends React.Component {
   onStepInput = (index, e) => {
     this.setState((prevState) => {
       let steps = [...prevState.steps]
-      steps[index].updateStatement(e.target.value)
+      steps[index].updateStatement(e.target.value);
       if (steps[index].rule) {
         steps[index].updateRule(steps[index-1], steps[index].rule);
       }
