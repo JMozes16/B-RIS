@@ -50,6 +50,7 @@ function parseStatement(str) {
     if (end === str.length) break;
     let nextConnective = str[end];
     if (end === str.length-1) {
+      console.log(nextConnective);
       throw new Error("Empty Statement");
     }
     if (nextConnective === "&" || nextConnective === "|") {
@@ -103,9 +104,9 @@ function replaceAtomics(str) {
 }
 
 function reduceSymbols(str) {
-  str = str.replace("¬", "~");
-  str = str.replace("∧", "&");
-  return str.replace("∨", "|");
+  str = str.replaceAll("¬", "~");
+  str = str.replaceAll("∧", "&");
+  return str.replaceAll("∨", "|");
 }
 
 // Makes sure parentheses match correctly
