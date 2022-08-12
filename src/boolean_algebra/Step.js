@@ -33,10 +33,12 @@ class Step {
   }
 
   updateRule(prevStep, rule) {
-    if (this.parsedStatementString) {
+    if (this.parsedStatementString && prevStep.parsedStatementString) {
       console.log(prevStep.parsedStatementString, this.parsedStatementString)
       this.rule = rule;
       this.correct = verifyStep(prevStep.parsedStatement, this.parsedStatement, rule);
+    } else if (this.parsedStatementString) {
+      this.correct = false;
     }
   }
 }
