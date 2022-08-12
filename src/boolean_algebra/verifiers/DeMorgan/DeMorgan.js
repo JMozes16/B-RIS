@@ -26,7 +26,7 @@ function DeMorgan(statement) {
 
 // DeMorgan logic
 function DeMorganHelper(statement1, statement2) {
-  if (!statement1.type || statement1.type === "ATOMIC" || !statement2.type || statement2.type === "ATOMIC") {
+  if (!statement1.type) {
     return false;
   }
   if (getString(statement1) === getString(statement2)) {
