@@ -49,6 +49,9 @@ function parseStatement(str) {
     statementParts.push(str.slice(start, end))
     if (end === str.length) break;
     let nextConnective = str[end];
+    if (end === str.length-1) {
+      throw new Error("Empty Statement");
+    }
     if (nextConnective === "&" || nextConnective === "|") {
       if (!connective) {
         connective = nextConnective;
