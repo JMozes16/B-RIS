@@ -19,6 +19,9 @@ class Step {
   // Changes the statement when the user makes a new input
   updateStatement(statement) {
     if (statement) {
+      statement = statement.replace("~", "¬");
+      statement = statement.replace("&", "∧");
+      statement = statement.replace("|", "∨");
       this.statement = statement;
       try {
         this.parsedStatement = getParsedStatement(statement)

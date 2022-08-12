@@ -102,6 +102,12 @@ function replaceAtomics(str) {
   });
 }
 
+function reduceSymbols(str) {
+  str = str.replace("¬", "~");
+  str = str.replace("∧", "&");
+  return str.replace("∨", "|");
+}
+
 // Makes sure parentheses match correctly
 function matchedParenthesis(str) {
   let count = 0;
@@ -166,6 +172,7 @@ export function sortStatement(statement1) {
 
 // Calls parseStatement() and throws errors on failure
 export function getParsedStatement(statement) {
+  statement = reduceSymbols(statement);
   if (/^$|^[()~&|a-zA-Z⊤⊥]*$/.test(statement)) {
     if (matchedParenthesis(statement)) {
       let parsedStatement = parseStatement(replaceAtomics(statement))
