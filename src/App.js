@@ -38,8 +38,6 @@ class App extends React.Component {
       if (steps[index].rule) {
         steps[index].updateRule(steps[index-1], steps[index].rule);
       }
-      console.log(index);
-      console.log(steps.length);
       if (index < steps.length-1 && steps[index+1].rule) {
         steps[index+1].updateRule(steps[index], steps[index+1].rule);
       }
