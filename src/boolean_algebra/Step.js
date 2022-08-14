@@ -22,6 +22,8 @@ class Step {
       statement = statement.replaceAll("~", "¬");
       statement = statement.replaceAll("&", "∧");
       statement = statement.replaceAll("|", "∨");
+      statement = statement.replaceAll("^", "⊥");
+      statement = statement.replaceAll("!", "⊤");
       this.statement = statement;
       try {
         this.parsedStatement = getParsedStatement(statement)
