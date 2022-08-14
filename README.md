@@ -27,7 +27,7 @@ https://master--graceful-melba-8008a5.netlify.app/
 ### Devs
 * Devanshu Haldar
 * Jeda Coward
-* Southerland Brown
+* Sutherland Brown
 * Michael Annor
 * Arya Shahvar
 
