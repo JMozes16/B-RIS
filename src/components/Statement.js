@@ -117,7 +117,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Distribution"){
-                    return <button title = "Expand individual occurrences of connectives into separate applications of connectives in the expression. EX: x ∧ (y ∨ z) ≡ (x ∧ y) ∨ (x ∨ z) and  x | (y ∧ z) ≡ (x ∨ y) ∧ (x ∨ z)"
+                    return <button title = "Expand individual occurrences of connectives into separate applications of connectives in the expression. EX: x ∧ (y ∨ z) ≡ (x ∧ y) ∨ (x ∧ z) and  x ∨ (y ∧ z) ≡ (x ∨ y) ∧ (x ∨ z)"
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
