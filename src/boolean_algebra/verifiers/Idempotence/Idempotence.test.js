@@ -44,3 +44,9 @@ test('Test 7', () => {
   let statement2 = getParsedStatement("(C|D)&((A&B)&(A&B))&(E|F)");
   expect(IdempotenceVerifier(statement1, statement2)).toBeTruthy();
 });
+
+test('Test 8', () => {
+  let statement1 = getParsedStatement("(C|D)&((A&B)&(A&B))&(E|F)");
+  let statement2 = getParsedStatement("(C|D)&((A&B)&(A&B))&(E|F)");
+  expect(IdempotenceVerifier(statement1, statement2)).toBeFalsy();
+});
