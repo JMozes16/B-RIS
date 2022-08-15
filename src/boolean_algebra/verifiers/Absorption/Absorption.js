@@ -14,7 +14,8 @@ export function AbsorptionVerifier(statement1, statement2) {
   } else if (getString(statement2).length > getString(statement1).length) {
     state1 = statement2;
     state2 = statement1;
-  } else {
+  }
+  if (getString(statement1) === getString(statement2)) {
     return false;
   }
   return findChanges(state1, state2, AbsorptionHelper, getString(state1), getString(state2));
