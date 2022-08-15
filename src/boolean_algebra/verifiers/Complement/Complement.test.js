@@ -56,3 +56,9 @@ test('Test 7', () => {
   let statement2 = getParsedStatement("A|⊤")
   expect(ComplementVerifier(statement1, statement2)).toBeTruthy();
 });
+
+test('Test 8', () => {
+  let statement1 = getParsedStatement("A|((A&B)|~(A&B))")
+  let statement2 = getParsedStatement("A|((A&B)|~(A&B))")
+  expect(ComplementVerifier(statement1, statement2)).toBeFalsy();
+});

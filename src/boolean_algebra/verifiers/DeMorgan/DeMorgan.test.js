@@ -96,3 +96,9 @@ test('Test 16', () => {
   let statement2 = getParsedStatement("~((A|B)&(C|D))&G")
   expect(DeMorganVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 17', () => {
+  let statement1 = getParsedStatement("(~(A|B)|(C|D))")
+  let statement2 = getParsedStatement("(~(A|B)|(C|D))")
+  expect(DeMorganVerifier(statement1, statement2)).toBeFalsy();
+});
