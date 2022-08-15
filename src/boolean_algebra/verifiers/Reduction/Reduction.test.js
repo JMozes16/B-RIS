@@ -102,3 +102,9 @@ test('Test 17', () => {
   let statement2 = getParsedStatement("(A|C)&B&~G")
   expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 18', () => {
+  let statement1 = getParsedStatement("(A|C)&(~(A|C)|B)&G")
+  let statement2 = getParsedStatement("(A|C)&(~(A|C)|B)&G")
+  expect(ReductionVerifier(statement1, statement2)).toBeFalsy();
+});

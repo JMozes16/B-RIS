@@ -108,3 +108,9 @@ test('Test 18', () => {
   let statement2 = getParsedStatement("(((A&(B|C))&(G|H|I))&(J|K))")
   expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 19', () => {
+  let statement1 = getParsedStatement("(A&B)|(C&D)")
+  let statement2 = getParsedStatement("(A&B)|(C&D)")
+  expect(AssociationVerifier(statement1, statement2)).toBeFalsy();
+});

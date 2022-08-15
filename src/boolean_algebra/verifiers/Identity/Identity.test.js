@@ -66,3 +66,9 @@ test('Test 11', () => {
   let statement2 = getParsedStatement("((C|D)|(A&B))")
   expect(IdentityVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 12', () => {
+  let statement1 = getParsedStatement("((C|D)|(A&B))")
+  let statement2 = getParsedStatement("((C|D)|(A&B))")
+  expect(IdentityVerifier(statement1, statement2)).toBeFalsy();
+});

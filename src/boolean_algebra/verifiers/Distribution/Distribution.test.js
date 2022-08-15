@@ -74,3 +74,9 @@ test('Test 12', () => {
   let statement2 = getParsedStatement("(D|A)&(((A|B)|C)&((A|B)|D))&(E|F)")
   expect(DistributionVerifier(statement1, statement2)).toBeTruthy();
 });
+
+test('Test 13', () => {
+  let statement1 = getParsedStatement("(D|A)&((A|B)|(C&D))&(E|F)")
+  let statement2 = getParsedStatement("(D|A)&((A|B)|(C&D))&(E|F)")
+  expect(DistributionVerifier(statement1, statement2)).toBeFalsy();
+});

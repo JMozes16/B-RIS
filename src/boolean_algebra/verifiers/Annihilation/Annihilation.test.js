@@ -54,3 +54,9 @@ test('Test 9', () => {
   let statement2 = getParsedStatement("(A|B)&⊤");
   expect(AnnihilationVerifier(statement1, statement2)).toBeFalsy();
 });
+
+test('Test 10', () => {
+  let statement1 = getParsedStatement("(A|B)&(A|B|C|D|⊤|⊥)")
+  let statement2 = getParsedStatement("(A|B)&(A|B|C|D|⊤|⊥)");
+  expect(AnnihilationVerifier(statement1, statement2)).toBeFalsy();
+});

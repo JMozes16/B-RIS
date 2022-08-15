@@ -156,3 +156,9 @@ test('Test 26', () => {
   let statement2 = getParsedStatement("(A&~~B)")
   expect(DoubleNegationVerifier(statement1, statement2)).toBeTruthy();
 });
+
+test('Test 27', () => { 
+  let statement1 = getParsedStatement("(A&~~B)")
+  let statement2 = getParsedStatement("(A&~~B)")
+  expect(DoubleNegationVerifier(statement1, statement2)).toBeFalsy();
+});
