@@ -54,3 +54,9 @@ test('Test 9', () => {
   let statement2 = getParsedStatement("A&(B|C)")
   expect(AdjacencyVerifier(statement1, statement2)).toBeTruthy();
 });
+
+test('Test 10', () => {
+  let statement1 = getParsedStatement("(B|((C|B)&(C|~B)))")
+  let statement2 = getParsedStatement("(B|((C|B)&(C|~B)))")
+  expect(AdjacencyVerifier(statement1, statement2)).toBeFalsy();
+});

@@ -31,6 +31,9 @@ function dissolve(statement) {
 
 // Checks if the statements are the same after dissolving
 export function AssociationVerifier(statement1, statement2) {
+  if (getString(statement1) === getString(statement2)) {
+    return false;
+  }
   dissolve(statement1)
   dissolve(statement2)
   return getString(statement1) === getString(statement2);
