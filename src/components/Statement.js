@@ -66,7 +66,7 @@ class Statement extends React.Component {
           {(!this.props.step.parseError && this.props.step.rule) &&
             <div>
               <button
-                className={"w-50 h-10 flex justify-center items-center text-white select-none rounded-md font-bold " + (this.props.step.correct ? "bg-green" : "bg-red")}
+                className={"w-32   h-10 flex justify-center items-center text-white select-none rounded-md font-bold " + (this.props.step.correct ? "bg-green" : "bg-red")}
                 onClick={this.toggleRuleSelect}
               >
 
