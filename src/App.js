@@ -70,7 +70,7 @@ class App extends React.Component {
               ))}
             </div>
             <button
-              className={"w-48 h-12 bg-blue rounded-lg text-white font-bold my-2 hover:bg-blue-dark"}
+              className={"w-90 h-12 bg-blue rounded-lg text-white font-bold my-2 hover:bg-blue-dark"}
               onClick={this.addStep}
             >
               Add Step

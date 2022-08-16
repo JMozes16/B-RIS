@@ -66,7 +66,7 @@ class Statement extends React.Component {
           {(!this.props.step.parseError && this.props.step.rule) &&
             <div>
               <button
-                className={"w-32 h-10 flex justify-center items-center text-white select-none rounded-md font-bold " + (this.props.step.correct ? "bg-green" : "bg-red")}
+                className={"w-50 h-10 flex justify-center items-center text-white select-none rounded-md font-bold " + (this.props.step.correct ? "bg-green" : "bg-red")}
                 onClick={this.toggleRuleSelect}
               >
 
@@ -100,7 +100,7 @@ class Statement extends React.Component {
                   </button>
                   }
                   else if(rule === "Double Negation"){
-                    return <button title = "double negation is the theorem that states that \"If a statement is true, then it is not the case that the statement is not true.\""
+                    return <button title = "If a statement is true, then it is not the case that the statement is not true."
                     className={"h-5 font-bold text-black"}
                     onClick={() => this.onRuleSelect(rule)}
                   >
